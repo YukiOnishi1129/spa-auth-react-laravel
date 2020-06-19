@@ -48,6 +48,10 @@ docker-compose exec app bash
 
 composer create-project "laravel/laravel=5.8.\*" プロジェクト名
 
+※最新バージョンの場合はこちら
+
+composer create-project --prefer-dist laravel/laravel プロジェクト名
+
 ### 5.url の確認
 
 この状態で以下の url に遷移すると正常に動作できてるか確認できます。
@@ -106,15 +110,15 @@ npm install browser-sync browser-sync-webpack-plugin
 ・webpack.mix.js に以下の内容を追記
 
 ```javascript=
-
 // react環境で構築する場合です。
-mix.react("resources/js/app.jsx", "public/js")
-    .sass("resources/sass/app.scss", "public/css")
-    // 以下の内容を追記 (上記記載(mix.react~)はvue環境では異なりますが、以下のbrowserSyncからの記載を追記すれば問題ないです。)
-    .browserSync({
-        proxy: "nginx",
-        open: false,
-    });
+mix
+  .react('resources/js/app.jsx', 'public/js')
+  .sass('resources/sass/app.scss', 'public/css')
+  // 以下の内容を追記 (上記記載(mix.react~)はvue環境では異なりますが、以下のbrowserSyncからの記載を追記すれば問題ないです。)
+  .browserSync({
+    proxy: 'nginx',
+    open: false,
+  });
 ```
 
 ・以下のコマンドを実行
@@ -138,7 +142,7 @@ docker-compose restart
 
 docker-compose stop
 
-・dockerのコンテナを停止
+・docker のコンテナを停止
 
 docker-compose down -v
 
