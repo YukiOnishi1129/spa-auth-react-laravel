@@ -52,6 +52,26 @@ const AppProvider = (props) => {
     setUserPassword(updatedUserPassword);
   };
 
+  const getUser = () => {
+    axios.defaults.withCredentials = true;
+    axios.get(hostName + 'api/user').then(
+      (response) => {
+        console.log('認証OK');
+        console.log(response);
+        setUserId(response.data.id);
+        setUserName(response.data.name);
+        setErrorMessage('');
+        setAuthStatus(LOGGED_IN);
+      },
+      // GET USER ERROR
+      (error) => {
+        console.log('テスト');
+        console.log(error.response);
+        setErrorMessage('GET USER ERROR：Could not complete the sign up');
+      }
+    );
+  };
+
   const signup = () => {
     axios.defaults.withCredentials = true;
     // CSRF COOKIE
@@ -203,6 +223,7 @@ const AppProvider = (props) => {
         handleUserNameInput,
         handleUserEmail,
         handleUserPassword,
+        getUser,
         signup,
         login,
         logout,

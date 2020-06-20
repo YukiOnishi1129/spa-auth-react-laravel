@@ -14,6 +14,7 @@ const AuthLogin = () => {
     handleUserEmail,
     handleUserPassword,
     login,
+    getUser,
     errorMessage,
   } = appContext;
   const [hidePassword, setHidePassword] = useState(true);
@@ -99,6 +100,13 @@ const AuthLogin = () => {
             onClick={() => login()}
           >
             Login
+          </button>
+          <button
+            className="font-inter_bold hover:bg-blue-500 text-blue-500 hover:text-white 
+          text-center rounded py-2 px-10 border border-blue-500 focus:outline-none"
+            onClick={() => getUser()}
+          >
+            Get User
           </button>
         </div>
         <div className="w-full text-red-600 text-center mt-8">
