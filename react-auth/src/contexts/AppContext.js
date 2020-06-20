@@ -75,6 +75,7 @@ const AppProvider = (props) => {
               //   ユーザー情報を取得
               axios.get(hostName + 'api/user').then(
                 (response) => {
+                  console.log('認証OK');
                   console.log(response);
                   setUserId(response.data.id);
                   setUserName(response.data.name);
@@ -83,6 +84,8 @@ const AppProvider = (props) => {
                 },
                 // GET USER ERROR
                 (error) => {
+                  console.log('テスト');
+                  console.log(error.response);
                   setErrorMessage(
                     'GET USER ERROR：Could not complete the sign up'
                   );
@@ -113,7 +116,6 @@ const AppProvider = (props) => {
       // COOKIE ERROR
       (error) => {
         console.log(error);
-        console.log(hostName);
         setErrorMessage('COOKIE ERROR：Could not complete the sign up');
       }
     );
@@ -163,7 +165,7 @@ const AppProvider = (props) => {
       },
       //   COOKIE ERROR
       (error) => {
-        console.log(error);
+        console.log(error.response);
         setErrorMessage('COOKIE ERROR：Could not complete the login');
       }
     );
@@ -171,7 +173,14 @@ const AppProvider = (props) => {
 
   const logout = () => {
     axios.defaults.withCredentials = true;
-    axios.get(hostName + 'api/logout');
+    axios.post(hostName + 'api/logout').then(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error.response);
+      }
+    );
     setUserId(0);
     setUserName('');
     setUserNameInput('');

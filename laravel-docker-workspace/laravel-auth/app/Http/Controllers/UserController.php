@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Log;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UserController extends Controller
 {
@@ -25,6 +24,7 @@ class UserController extends Controller
         $user = $this->create($request->all());
         // ログイン処理
         $this->guard()->login($user);
+        // Auth::login($user);
         return response()->json([
             'user' => $user,
             'message' => 'registration successful'
@@ -92,6 +92,7 @@ class UserController extends Controller
      */
     public function logout()
     {
+        // Log::info('ログアウト');
         Auth::logout();
         return response()->json(['message' => 'Logged Out'], 200);
     }
