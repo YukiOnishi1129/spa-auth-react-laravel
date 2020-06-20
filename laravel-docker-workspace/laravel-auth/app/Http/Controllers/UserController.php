@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UserController extends Controller
 {
@@ -34,7 +35,7 @@ class UserController extends Controller
      * Auth::guard呼び出しメソッド
      * @return \Illuminate\Support\Facades\Auth
      */
-    protected function gurad()
+    protected function guard()
     {
         return Auth::guard();
     }

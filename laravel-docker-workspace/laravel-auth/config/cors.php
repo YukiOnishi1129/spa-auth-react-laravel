@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:3000'], //リクエストが受け入れられるURLを指定する
+    'allowed_origins' => ['http://localhost:3002'], //リクエストが受け入れられるURLを指定する
 
     'allowed_origins_patterns' => [],
 

@@ -1,25 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import './css/tailwind.css';
+import { AppProvider } from './contexts/AppContext';
+import AuthContainer from './components/AuthContainer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex w-full justify-center bg-blue-200 pt-16 pb-32">
+      <div className="lg:flex w-11/12 lg:w-3/4 xl:w-3/5">
+        <AppProvider>
+          <AuthContainer />
+        </AppProvider>
+      </div>
     </div>
   );
 }
